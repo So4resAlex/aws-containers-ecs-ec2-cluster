@@ -1,1 +1,0 @@
-# aws-containers-ecs-ec2-cluster
