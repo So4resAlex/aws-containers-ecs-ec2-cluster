@@ -1,12 +1,14 @@
 output "load_balancer_dns" {
-  value = aws_lb.main.dns_name
+  description = "The DNS name of the load balancer."
+  value       = aws_lb.main.dns_name
 }
-output "lb_ssm_arn" {
-  value = aws_ssm_parameter.lb_arn.id
 
+output "lb_ssm_arn" {
+  description = "The ARN of the SSM parameter that stores the load balancer ARN."
+  value       = aws_ssm_parameter.lb_arn.id
 }
 
 output "lb_ssm_listener" {
-  value = aws_ssm_parameter.lb_arn.id
-
+  description = "The ARN of the SSM parameter that stores the load balancer listener ARN."
+  value       = aws_ssm_parameter.lb_listener_arn.id
 }
