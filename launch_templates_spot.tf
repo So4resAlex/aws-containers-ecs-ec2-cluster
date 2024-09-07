@@ -13,7 +13,7 @@ resource "aws_launch_template" "spots" {
     }
   }
   iam_instance_profile {
-    name = "ecsInstanceRole"
+    name = aws_iam_instance_profile.main.name
   }
   update_default_version = true
   block_device_mappings {
