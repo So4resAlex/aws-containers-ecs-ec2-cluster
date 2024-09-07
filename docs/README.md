@@ -1,6 +1,5 @@
-## Requirements
-
-No requirements.
+Diagrama de recursos
+![Flow](/docs/ECS.drawio.png)
 
 ## Providers
 
