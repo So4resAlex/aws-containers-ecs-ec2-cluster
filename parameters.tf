@@ -5,7 +5,7 @@ resource "aws_ssm_parameter" "lb_arn" {
 }
 
 resource "aws_ssm_parameter" "aws_lb_listener" {
-  name  = "/Linux-Tips/ecs/lb/listern"
+  name  = "/Linux-Tips/ecs/lb/listener"
   value = aws_lb_listener.main.arn
   type  = "String"
 }

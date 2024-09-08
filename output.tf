@@ -8,7 +8,7 @@ output "lb_ssm_arn" {
   value       = aws_ssm_parameter.lb_arn.id
 }
 
-output "lb_ssm_listener" {
-  description = "The ARN of the SSM parameter that stores the load balancer listener ARN."
-  value       = aws_ssm_parameter.lb_listener_arn.id
-}
+ output "lb_ssm_listener" {
+   description = "The ARN of the SSM parameter that stores the load balancer listener ARN."
+   value       = aws_ssm_parameter.aws_lb_listener.id
+ }
