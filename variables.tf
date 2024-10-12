@@ -12,44 +12,44 @@ variable "region" {
 ##### SSM VPC #####
 variable "ssm_vpc_id" {
   description = "ID of the VPC used by SSM."
-  type = string
+  type        = string
 
 
 }
 
 variable "ssm_public_subnet_1" {
   description = "ID of the first public subnet in the SSM VPC."
-  type = string
+  type        = string
 
 }
 
 variable "ssm_public_subnet_2" {
   description = "ID of the second public subnet in the SSM VPC."
-  type = string
+  type        = string
 
 }
 
 variable "ssm_public_subnet_3" {
   description = "ID of the third public subnet in the SSM VPC."
-  type = string
+  type        = string
 
 }
 
 variable "ssm_private_subnet_1" {
   description = "ID of the first private subnet in the SSM VPC."
-  type = string
+  type        = string
 
 }
 
 variable "ssm_private_subnet_2" {
   description = "ID of the second private subnet in the SSM VPC."
-  type = string
+  type        = string
 
 }
 
 variable "ssm_private_subnet_3" {
   description = "ID of the third private subnet in the SSM VPC."
-  type = string
+  type        = string
 
 }
 
@@ -115,4 +115,9 @@ variable "cluster_spot_max_size" {
 variable "cluster_spot_desired_size" {
   description = "Desired number of spot instances in the ECS cluster."
   type        = number
+}
+
+variable "create_spots" {
+  description = "Info about create spot instances or not"
+  type        = bool
 }
