@@ -11,7 +11,7 @@ resource "aws_ecs_cluster_capacity_providers" "main" {
   cluster_name = aws_ecs_cluster.main.name
   capacity_providers = [
     aws_ecs_capacity_provider.on_demand.name,
-    aws_ecs_capacity_provider.spots.name
+    var.create_spots ? aws_ecs_capacity_provider.spots.name : null
   ]
   default_capacity_provider_strategy {
     capacity_provider = aws_ecs_capacity_provider.on_demand.name
