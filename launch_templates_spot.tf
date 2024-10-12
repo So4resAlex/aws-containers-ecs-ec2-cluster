@@ -1,4 +1,5 @@
 resource "aws_launch_template" "spots" {
+  count = var.create_spots == true ? 1 : 0
   name_prefix   = format("%s-spots", var.project_name)
   image_id      = var.nodes_ami
   instance_type = var.node_instance_type
@@ -9,7 +10,7 @@ resource "aws_launch_template" "spots" {
   instance_market_options {
     market_type = "spot"
     spot_options {
-      max_price = "0.15"
+      max_price = "0.20"
     }
   }
   iam_instance_profile {
