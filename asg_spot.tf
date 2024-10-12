@@ -1,4 +1,5 @@
 resource "aws_autoscaling_group" "spots" {
+  count       = var.create_spots == true ? 1 : 0
   name_prefix = format("%s-spots", var.project_name)
   vpc_zone_identifier = [
     data.aws_ssm_parameter.subnet_private_1a.value,
@@ -26,7 +27,8 @@ resource "aws_autoscaling_group" "spots" {
 }
 
 resource "aws_ecs_capacity_provider" "spots" {
-  name = format("%s-spots", var.project_name)
+  count = var.create_spots == true ? 1 : 0
+  name  = format("%s-spots", var.project_name)
   auto_scaling_group_provider {
     auto_scaling_group_arn = aws_autoscaling_group.spots.arn
 
