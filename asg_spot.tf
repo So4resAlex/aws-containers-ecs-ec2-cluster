@@ -11,8 +11,8 @@ resource "aws_autoscaling_group" "spots" {
   min_size         = var.cluster_spot_min_size
 
   launch_template {
-    id      = aws_launch_template.spots.id
-    version = aws_launch_template.spots.latest_version
+    id      = aws_launch_template.spots[count.index].id
+    version = aws_launch_template.spots[count.index].latest_version
   }
   tag {
     key                 = "Name"
@@ -30,7 +30,7 @@ resource "aws_ecs_capacity_provider" "spots" {
   count = var.create_spots == true ? 1 : 0
   name  = format("%s-spots", var.project_name)
   auto_scaling_group_provider {
-    auto_scaling_group_arn = aws_autoscaling_group.spots.arn
+    auto_scaling_group_arn = aws_autoscaling_group.spots[count.index].arn
 
     managed_scaling {
       maximum_scaling_step_size = 10

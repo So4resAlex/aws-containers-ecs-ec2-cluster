@@ -9,10 +9,12 @@ resource "aws_ecs_cluster" "main" {
 
 resource "aws_ecs_cluster_capacity_providers" "main" {
   cluster_name = aws_ecs_cluster.main.name
-  capacity_providers = [
-    aws_ecs_capacity_provider.on_demand.name,
-    var.create_spots ? aws_ecs_capacity_provider.spots.name : null
-  ]
+  
+  capacity_providers = concat(
+    [aws_ecs_capacity_provider.on_demand.name],
+    var.create_spots ? [for spot in aws_ecs_capacity_provider.spots : spot.name] : []
+  )
+
   default_capacity_provider_strategy {
     capacity_provider = aws_ecs_capacity_provider.on_demand.name
     weight            = 100
